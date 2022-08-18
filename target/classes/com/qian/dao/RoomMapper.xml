@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qian.dao.RoomMapper">
+    <insert id="addRoom" parameterType="Rooms">
+        insert into ssmbuild.rooms(roomName, roomCounts, roomHasdesktp,roomHasprojector,roomCan)
+        values (#{roomName},#{roomCounts},#{roomHasdesktp},#{roomHasprojector},#{roomCan});
+
+    </insert>
+
+    <delete id="deleteRoomById" parameterType="int">
+        delete
+        from ssmbuild.rooms
+        where roomID=#{roomId};
+    </delete>
+
+    <update id="updateRoom" parameterType="Rooms">
+        update ssmbuild.rooms
+        set roomName=#{roomName}, roomCounts=#{roomCounts},
+            roomHasdesktp=#{roomHasdesktp},roomHasprojector=#{roomHasprojector},roomCan=#{roomCan}
+        where roomID=#{roomID};
+    </update>
+
+    <select id="queryRoomById" resultType="Rooms">
+        select *
+        from ssmbuild.rooms where roomID=#{roomId};
+    </select>
+
+    <select id="queryRoomByName" resultType="Rooms">
+        select *
+        from ssmbuild.Rooms where roomName=#{roomName};
+    </select>
+
+    <select id="queryAllRoom" resultType="Rooms">
+        select *
+        from ssmbuild.Rooms;
+    </select>
+
+    <select id="qurryAllRoomCan" resultType="Rooms">
+        select *
+        from ssmbuild.Rooms
+        where roomCan=1;
+    </select>
+</mapper>
